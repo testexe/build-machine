@@ -1,0 +1,26 @@
+---
+#tasks file for general_config
+
+- name: Get current username
+  become: no
+  command: whoami
+  register: current_user
+
+- name: Backup & Configure Bashrc File
+  become: no
+  command: mv /home/{{ current_user.stdout }}/.zshrc /home/{{ current_user.stdout }}/.zshrc.bak
+  command: cp "{{ role_path }}/files/zshrc" /home/{{ current_user.stdout }}/.zshrc
+
+- name: Backup Terminator Default config File
+  become: no
+  command: mv "/home/{{ current_user.stdout }}/.config/terminator/config" "/home/{{ current_user.stdout }}/.config/terminator/config.bak"
+  command: cp "{{ role_path }}/files/terminatorconf" "/home/{{ current_user.stdout }}/.config/terminator/config"
+
+- name: Configur Common commands Snip
+  become: no
+  command: cp "{{ role_path }}/files/project" "/home/{{ current_user.stdout }}/.commands"
+
+- name: Unzip rockyou.txt.gz
+  become: yes
+  ansible.builtin.command: gunzip -k /usr/share/wordlists/rockyou.txt.gz
+
