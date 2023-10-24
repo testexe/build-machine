@@ -9,9 +9,6 @@ sqlmap -u $URL --threads=2 --time-sec=10 --level=4 --risk=3 --dump
 #Social Recon
 theharvester -d domain.org -1 500 -b google
 
-#Nmap HTTP-methods
-nmap -p88,443 --script-http-methods  --script-args 'http-methods.url-path="/directory/goes/here' 
-
 ##SMTP USER ENUM
 smtp-user-enum -M VRFY -U /opt/Seclists/Usernames/xato-net-10-million-usernames.txt -t $IP 
 smtp-user-enum -M EXPN -U /opt/Seclists/Usernames/xato-net-10-million-usernames.txt -t $IP 

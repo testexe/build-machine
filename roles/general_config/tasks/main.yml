@@ -17,8 +17,8 @@
   command: cp "{{ role_path }}/files/terminatorconf" "/home/{{ current_user.stdout }}/.config/terminator/config"
 
 - name: Configur Common commands Snip
-  become: no
-  command: cp "{{ role_path }}/files/project" "/home/{{ current_user.stdout }}/.commands"
+  become: yes
+  command: cp "{{ role_path }}/files/project" "/opt/.commands"
 
 - name: Unzip rockyou.txt.gz
   become: yes
