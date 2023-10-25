@@ -38,14 +38,4 @@
     name: linux-image-generic
     state: latest
 
-# - name: Check if there are available package updates
-#   become: yes
-#   ansible.builtin.apt:
-#     update_cache: yes
-#   register: package_update
-
-# - name: Ensure SearchSploit is up-to-date
-#   become: yes
-#   command: searchsploit -u
-#   when: package_update|changed
 
