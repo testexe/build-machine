@@ -38,4 +38,7 @@
     name: linux-image-generic
     state: latest
 
-
+- name: Update searchsploit database
+  command: searchsploit -u
+  register: result
+  failed_when: result.rc != 0 and result.rc != 6
